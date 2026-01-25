@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-background">
+    <section className="relative overflow-hidden bg-background bg-primary/10">
       <div className="container relative mx-auto px-4 py-20 md:py-28 lg:py-36">
         {/* Center-aligned content */}
         <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
@@ -14,22 +14,21 @@ export function Hero() {
           </h1>
 
           {/* Subheading */}
-          <p className="mb-10 max-w-2xl text-lg text-muted-foreground md:text-xl">
-            Premium quality fish and seafood from the waters of Kerala, cleaned
-            and ready to cook. Quality and trust, delivered fresh every day.
+          <p className="mb-10 max-w-2xl text-sm text-muted-foreground md:text-lg">
+            Fresh seafood, cleaned and ready to cook at your door step.
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col gap-4 sm:flex-row">
             <Button size="lg" className="px-8" asChild>
-              <Link href="/products">
+              <Link href="#">
                 Order Now
               </Link>
             </Button>
           </div>
 
-          {/* Trust Indicator */}
-          <div className="mt-12 flex flex-wrap items-center justify-center gap-8">
+          {/* Trust Indicator - Hidden on mobile */}
+          <div className="mt-12 hidden flex-wrap items-center justify-center gap-8 md:flex">
             <div className="flex items-center gap-2">
               <svg
                 className="h-5 w-5 text-green-500"
