@@ -1,22 +1,19 @@
 import { ProductCard } from "@/components/ui/product-card";
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
-import Link from "next/link";
-import { getProducts, getProductImage } from "@/lib/api/products";
+import { getProducts, getProductImage, getWholePrice, slugify } from "@/lib/api/products";
 
 export async function FeaturedProducts() {
   const apiProducts = await getProducts();
 
   const products = (apiProducts || []).map((p) => ({
-    id: p.variant,
+    id: slugify(p.productName),
     name: p.productName,
-    variantName: p.variantName,
-    price: p.price,
+    alternateName: p.alternateName,
+    price: getWholePrice(p),
     image: getProductImage(p),
   }));
 
   return (
-    <section className="py-12 md:py-16">
+    <section id="products" className="py-12 md:py-16">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="mb-8 w-full text-center">
@@ -29,7 +26,7 @@ export async function FeaturedProducts() {
         </div>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

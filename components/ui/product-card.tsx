@@ -1,11 +1,10 @@
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 
 export interface Product {
   id: string;
   name: string;
-  variantName?: string;
+  alternateName?: string;
   price: number;
   image: string;
 }
@@ -14,23 +13,12 @@ interface ProductCardProps {
   product: Product;
 }
 
-const variantDisplayNames: Record<string, string> = {
-  WHOLE: "Cleaned Fish",
-  FRY: "Fry Cut",
-  CURRY: "Curry Cut",
-};
-
-function getVariantDisplayName(variant?: string): string {
-  if (!variant) return "";
-  return variantDisplayNames[variant.toUpperCase()] || variant;
-}
-
 export function ProductCard({ product }: ProductCardProps) {
   return (
     <div className="group relative flex flex-col overflow-hidden rounded-lg border border-border bg-card transition-all hover:shadow-md">
       {/* Image */}
       <Link
-        href="#"
+        href={`/products/${product.id}`}
         className="relative aspect-square overflow-hidden bg-muted"
       >
         <Image
@@ -47,21 +35,16 @@ export function ProductCard({ product }: ProductCardProps) {
         {/* Name */}
         <Link href={`/products/${product.id}`} className="group/link">
           <h3 className="line-clamp-1 text-sm font-medium text-foreground transition-colors group-hover/link:text-primary">
-            {product.name} ({getVariantDisplayName(product.variantName)})
+            {product.name}
+            {product.alternateName && ` / ${product.alternateName}`}
           </h3>
         </Link>
 
         {/* Price */}
         <div className="mt-2 flex items-baseline gap-1">
-          <span className="font-bold text-foreground">₹{product.price}</span>
+          <span className="font-bold text-green-700">₹{product.price}</span>
           <span className="text-xs text-muted-foreground">/kg</span>
         </div>
-
-        {/* Add to Cart Button 
-        <Button size="sm" className="mt-3 w-full">
-          Add to Cart
-        </Button>
-        */}
       </div>
     </div>
   );

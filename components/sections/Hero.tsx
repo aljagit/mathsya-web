@@ -21,7 +21,7 @@ export function Hero() {
           {/* CTA Buttons */}
           <div className="flex flex-col gap-4 sm:flex-row">
             <Button size="lg" className="px-8" asChild>
-              <Link href="#">
+              <Link href="#products">
                 Order Now
               </Link>
             </Button>
