@@ -3,6 +3,7 @@
 import { createContext, useContext, useState, useEffect, useCallback } from "react";
 
 export interface CartItem {
+  productId: string;
   variantId: string;
   name: string;
   variantName: string;

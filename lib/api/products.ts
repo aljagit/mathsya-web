@@ -1,4 +1,4 @@
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL
 
 export interface ApiVariant {
   variant: string;
@@ -18,7 +18,7 @@ export interface ApiProduct {
 export async function getProducts(): Promise<ApiProduct[]> {
   try {
     const response = await fetch(
-      `${API_BASE_URL}/api/method/mathsya.mathsya.api.product.list`,
+      `${API_BASE_URL}/mathsya.mathsya.api.product.list`,
       {
         next: { revalidate: 60 },
         cache: "no-store", // Disable cache during development

@@ -34,6 +34,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
   const handleAddToBag = (variant: Variant) => {
     addToCart(
       {
+        productId: product.id,
         variantId: variant.variantId,
         name: product.name,
         variantName: variant.variantName,
