@@ -12,45 +12,42 @@ export function Footer() {
                 Mathsya
               </span>
             </Link>
-            <p className="text-sm text-muted-foreground">
-              Fresh Seafood, Delivered Daily
-            </p>
-            <p className="text-xs text-muted-foreground">
-              Chavakkad, Thrissur, Kerala
+            <p className="text-xs text-muted-foreground text-center md:text-left">
+              Mathsya Fish Trading and Marketing Private Limited<br/>Door No. 18/291-2, Near Viswanatha Temple,<br/>Manathala, Chavakkad, Thrissur<br/>Kerala, India, 680506
             </p>
           </div>
 
           {/* Quick Links */}
           <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
             <Link
-              href="#"
+              href="/about"
               className="text-sm text-muted-foreground transition-colors hover:text-primary"
             >
               About Us
             </Link>
             <Link
-              href="#"
+              href="/contact"
               className="text-sm text-muted-foreground transition-colors hover:text-primary"
             >
-              Products
+              Contact Us
             </Link>
             <Link
-              href="#"
+              href="/terms"
               className="text-sm text-muted-foreground transition-colors hover:text-primary"
             >
-              Contact
+              Terms &amp; Conditions
             </Link>
             <Link
-              href="#"
+              href="/refund-policy"
               className="text-sm text-muted-foreground transition-colors hover:text-primary"
             >
-              Delivery
+              Refund Policy
             </Link>
             <Link
-              href="#"
+              href="/privacy"
               className="text-sm text-muted-foreground transition-colors hover:text-primary"
             >
-              Privacy
+              Privacy Policy
             </Link>
           </nav>
         </div>
@@ -58,8 +55,7 @@ export function Footer() {
         {/* Copyright */}
         <div className="mt-8 border-t border-border pt-6 text-center">
           <p className="text-xs text-muted-foreground">
-            &copy; {new Date().getFullYear()} Mathsya Fish Trading and Marketing
-            Pvt Ltd. All rights reserved.
+            &copy; {new Date().getFullYear()} Mathsya Fish Trading and Marketing Private Limited. All rights reserved.
           </p>
         </div>
       </div>

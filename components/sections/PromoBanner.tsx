@@ -16,7 +16,7 @@ export function PromoBanner() {
             </p>
           </div>
           <Button size="lg" variant="secondary" className="shrink-0" asChild>
-            <Link href="#">Shop Now</Link>
+            <Link href="#products">Shop Now</Link>
           </Button>
         </div>
       </div>

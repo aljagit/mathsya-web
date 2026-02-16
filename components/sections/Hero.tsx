@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ShieldCheck, Truck, Leaf } from "lucide-react";
 import Link from "next/link";
 
 export function Hero() {
@@ -30,55 +30,19 @@ export function Hero() {
           {/* Trust Indicator - Hidden on mobile */}
           <div className="mt-12 hidden flex-wrap items-center justify-center gap-8 md:flex">
             <div className="flex items-center gap-2">
-              <svg
-                className="h-5 w-5 text-green-500"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
+              <ShieldCheck className="h-5 w-5 text-primary" />
               <span className="text-sm text-muted-foreground">
                 Freshness Guarantee
               </span>
             </div>
             <div className="flex items-center gap-2">
-              <svg
-                className="h-5 w-5 text-green-500"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
+              <Truck className="h-5 w-5 text-primary" />
               <span className="text-sm text-muted-foreground">
                 Reliable Delivery
               </span>
             </div>
             <div className="flex items-center gap-2">
-              <svg
-                className="h-5 w-5 text-green-500"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
+              <Leaf className="h-5 w-5 text-primary" />
               <span className="text-sm text-muted-foreground">
                 Sustainably Sourced
               </span>

@@ -21,7 +21,6 @@ export async function getProducts(): Promise<ApiProduct[]> {
       `${API_BASE_URL}/mathsya.mathsya.api.product.list`,
       {
         next: { revalidate: 60 },
-        cache: "no-store", // Disable cache during development
       }
     );
 
