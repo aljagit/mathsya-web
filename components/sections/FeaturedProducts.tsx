@@ -4,13 +4,15 @@ import { getProducts, getProductImage, getWholePrice, slugify } from "@/lib/api/
 export async function FeaturedProducts() {
   const apiProducts = await getProducts();
 
-  const products = (apiProducts || []).map((p) => ({
-    id: slugify(p.productName),
-    name: p.productName,
-    alternateName: p.alternateName,
-    price: getWholePrice(p),
-    image: getProductImage(p),
-  }));
+  const products = (apiProducts || [])
+    .map((p) => ({
+      id: slugify(p.productName),
+      name: p.productName,
+      alternateName: p.alternateName,
+      price: getWholePrice(p),
+      image: getProductImage(p),
+    }))
+    .filter((p) => p.image);
 
   return (
     <section id="products" className="py-12 md:py-16">
