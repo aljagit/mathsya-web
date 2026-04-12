@@ -18,6 +18,7 @@ export default async function ProductPage({
     id: apiProduct.product,
     name: apiProduct.productName,
     image: getProductImage(apiProduct),
+    description: apiProduct.description,
     variants: apiProduct.variants.map((v) => ({
       variantId: v.variant,
       variantName: v.variantName,
