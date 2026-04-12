@@ -13,6 +13,7 @@ export interface ApiProduct {
   localName?: string;
   variants: ApiVariant[];
   image: string;
+  description?: string;
 }
 
 export async function getProducts(): Promise<ApiProduct[]> {
