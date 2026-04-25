@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -14,6 +16,12 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
 
 export const metadata: Metadata = {
   title: "Mathsya - Order Fish & Seafood Online in Thrissur",
@@ -42,6 +50,10 @@ export default function RootLayout({
           <main className="min-h-screen pt-16">{children}</main>
           <Footer />
         </CartProvider>
+        <Script
+          src={`https://securestage.paytmpayments.com/merchantpgpui/checkoutjs/merchants/${process.env.NEXT_PUBLIC_PAYTM_MID}.js`}
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
