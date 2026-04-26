@@ -51,7 +51,7 @@ export default function RootLayout({
           <Footer />
         </CartProvider>
         <Script
-          src={`https://securestage.paytmpayments.com/merchantpgpui/checkoutjs/merchants/${process.env.NEXT_PUBLIC_PAYTM_MID}.js`}
+          src={`${process.env.NEXT_PUBLIC_PAYTM_BASE_URL}/merchantpgpui/checkoutjs/merchants/${process.env.NEXT_PUBLIC_PAYTM_MID}.js`}
           strategy="afterInteractive"
         />
       </body>
