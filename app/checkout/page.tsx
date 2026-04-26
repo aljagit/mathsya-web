@@ -198,7 +198,7 @@ export default function CheckoutPage() {
         const result = await getPaymentStatus(token, orderId);
         const status = result.data.payment_status;
         console.log(`[Paytm] Poll attempt ${i + 1} — payment_status: "${status}"`);
-        if (status === "Completed" || status === "Success") {
+        if (status === "Paid" || status === "Completed" || status === "Success") {
           clearCart();
           setVerifyingPayment(false);
           setPlacing(false);
