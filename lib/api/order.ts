@@ -177,7 +177,36 @@ export interface CreateOrderResponse {
     message: string;
     order_id: string;
     total_amount: number;
+    txn_token: string;
   };
+}
+
+export interface PaymentStatusResponse {
+  status: string;
+  data: {
+    payment_status: string;
+    payment_reference: string;
+  };
+}
+
+export async function getPaymentStatus(
+  token: string,
+  orderId: string
+): Promise<PaymentStatusResponse> {
+  const response = await fetch(
+    `${API_BASE_URL}/mathsya.mathsya.payments.get_payment_status?order_id=${encodeURIComponent(orderId)}`,
+    {
+      headers: {
+        "X-Auth-Token": token,
+      },
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error(`Failed to get payment status: ${response.status}`);
+  }
+
+  return response.json();
 }
 
 export async function createOrder(
