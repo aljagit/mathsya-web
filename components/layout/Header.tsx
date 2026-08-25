@@ -1,13 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { Search, Handbag } from "lucide-react";
+import { Search, Handbag, User } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/lib/cart-context";
+import { useAuth } from "@/lib/auth-context";
+import { LoginDialog } from "@/components/auth/LoginDialog";
 
 export function Header() {
   const { cartCount } = useCart();
+  const { isLoggedIn, customer } = useAuth();
 
   return (
     <header className="fixed top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
@@ -43,6 +46,20 @@ export function Header() {
             >
               <Search className="h-5 w-5" />
             </Button>
+
+            {/* Account */}
+            {isLoggedIn ? (
+              <Link href="/account" aria-label="Account">
+                <Button variant="ghost" className="gap-2">
+                  <User className="h-5 w-5" />
+                  <span className="hidden sm:inline text-sm">
+                    {customer?.customer_name?.split(" ")[0] || "Account"}
+                  </span>
+                </Button>
+              </Link>
+            ) : (
+              <LoginDialog />
+            )}
 
             {/* Cart */}
             <Link href="/checkout" aria-label="Shopping Cart">

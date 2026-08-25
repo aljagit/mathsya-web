@@ -26,6 +26,7 @@ import {
   getPaymentStatus,
   type Customer,
 } from "@/lib/api/order";
+import { validateAddress } from "@/lib/validation/address";
 
 declare global {
   interface Window {
@@ -321,13 +322,11 @@ export default function CheckoutPage() {
     const needsForm = !savedCustomer || isEditingAddress;
 
     if (needsForm) {
-      if (!name.trim()) { setDeliveryError("Please enter your name"); return; }
-      if (name.trim().length < 3) { setDeliveryError("Name must be at least 3 characters"); return; }
-      if (!address.trim()) { setDeliveryError("Please enter your delivery address"); return; }
-      if (address.trim().length < 10) { setDeliveryError("Address must be at least 10 characters"); return; }
-      if (!/^\d{6}$/.test(pincode)) { setDeliveryError("Please enter a valid 6-digit PIN code"); return; }
-      if (!location.trim()) { setDeliveryError("Please select a delivery location"); return; }
-      if (landmark.trim() && landmark.trim().length < 3) { setDeliveryError("Landmark must be at least 3 characters"); return; }
+      const validationError = validateAddress({ name, address, pincode, location, landmark });
+      if (validationError) {
+        setDeliveryError(validationError);
+        return;
+      }
     }
 
     setPaymentError("");

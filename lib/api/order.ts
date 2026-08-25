@@ -209,6 +209,89 @@ export async function getPaymentStatus(
   return response.json();
 }
 
+export interface Order {
+  name: string;
+  order_date: string;
+  total_amount: number;
+  discount: number;
+  payment_status: string;
+  payment_mode: string;
+  creation: string;
+}
+
+export interface GetOrdersResponse {
+  status: string;
+  data: {
+    orders: Order[];
+  };
+}
+
+export async function getOrders(token: string): Promise<Order[]> {
+  const response = await fetch(
+    `${API_BASE_URL}/mathsya.mathsya.api.order.get_orders`,
+    {
+      headers: {
+        "X-Auth-Token": token,
+      },
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error(`Failed to get orders: ${response.status}`);
+  }
+
+  const data: GetOrdersResponse = await response.json();
+  return data.data.orders;
+}
+
+export interface OrderLineItem {
+  product: string;
+  product_name: string;
+  image: string | null;
+  variant: string;
+  variant_name: string;
+  quantity: number;
+  price: number;
+  amount: number;
+}
+
+export interface OrderDetail {
+  name: string;
+  order_date: string;
+  total_amount: number;
+  discount: number;
+  payment_status: string;
+  payment_mode: string;
+  payment_reference: string | null;
+  customer_name: string;
+  contact_number: string;
+  location: string;
+  items: OrderLineItem[];
+}
+
+export interface GetOrderResponse {
+  status: string;
+  data: OrderDetail;
+}
+
+export async function getOrder(token: string, orderId: string): Promise<OrderDetail> {
+  const response = await fetch(
+    `${API_BASE_URL}/mathsya.mathsya.api.order.get_order?order_id=${encodeURIComponent(orderId)}`,
+    {
+      headers: {
+        "X-Auth-Token": token,
+      },
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error(`Failed to get order: ${response.status}`);
+  }
+
+  const data: GetOrderResponse = await response.json();
+  return data.data;
+}
+
 export async function createOrder(
   token: string,
   items: OrderItem[]

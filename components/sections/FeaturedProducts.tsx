@@ -35,9 +35,12 @@ export async function FeaturedProducts() {
         </div>
 
         {products.length === 0 && (
-          <p className="text-center text-muted-foreground">
-            No products available at the moment.
-          </p>
+          <div className="flex justify-center">
+            <div className="inline-flex items-center gap-1.5 rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-700">
+              <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-amber-500" />
+              No products available at the moment.
+            </div>
+          </div>
         )}
       </div>
     </section>
